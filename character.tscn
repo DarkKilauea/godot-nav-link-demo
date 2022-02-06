@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1owpxl700m7a"]
+
+[ext_resource type="Script" path="res://character.gd" id="1_2fh30"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_byxc8"]
+radius = 0.5
+height = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_exct7"]
+albedo_color = Color(0.356863, 0.741176, 0.988235, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i42x3"]
+material = SubResource( "StandardMaterial3D_exct7" )
+radius = 0.5
+height = 2.0
+
+[node name="Character" type="CharacterBody3D"]
+floor_constant_speed = true
+script = ExtResource( "1_2fh30" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource( "CapsuleShape3D_byxc8" )
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = SubResource( "CapsuleMesh_i42x3" )
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+radius = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, 0.579228, -0.40558, 2.98023e-08, 0.573576, 0.819152, 0.707107, -0.579228, 0.40558, -8, 15, 8)
+
+[node name="PathVisualization" type="MeshInstance3D" parent="."]
+top_level = true
+
+[connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_finished"]
+[connection signal="path_changed" from="NavigationAgent3D" to="." method="_on_path_changed"]
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_target_reached"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_velocity_computed"]
