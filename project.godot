@@ -12,5 +12,9 @@ config_version=5
 
 config/name="NavLink Demo"
 run/main_scene="res://nav_level.tscn"
-config/icon="res://icon.png"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
+config/icon="res://icon.png"
+
+[filesystem]
+
+import/blender/enabled=false

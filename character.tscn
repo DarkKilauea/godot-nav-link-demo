@@ -3,29 +3,26 @@
 [ext_resource type="Script" path="res://character.gd" id="1_2fh30"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_byxc8"]
-radius = 0.5
-height = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_exct7"]
 albedo_color = Color(0.356863, 0.741176, 0.988235, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_i42x3"]
-material = SubResource( "StandardMaterial3D_exct7" )
-radius = 0.5
-height = 2.0
+material = SubResource("StandardMaterial3D_exct7")
 
 [node name="Character" type="CharacterBody3D"]
 floor_constant_speed = true
-script = ExtResource( "1_2fh30" )
+script = ExtResource("1_2fh30")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource( "CapsuleShape3D_byxc8" )
+shape = SubResource("CapsuleShape3D_byxc8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 gi_mode = 2
-mesh = SubResource( "CapsuleMesh_i42x3" )
+mesh = SubResource("CapsuleMesh_i42x3")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
 radius = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="."]

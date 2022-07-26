@@ -29,10 +29,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	# Reset velocity
-	motion_velocity = Vector3();
+	velocity = Vector3();
 	
 	# Add gravity
-	motion_velocity += Vector3.UP * -9.8;
+	velocity += Vector3.UP * -9.8;
 	
 	# Add movement along path
 	if !nav_agent.is_navigation_finished():
@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		var desired_velocity := direction * nav_agent.max_speed;
 		
 		nav_agent.set_velocity(desired_velocity);
-		motion_velocity += nav_safe_velocity;
+		velocity += nav_safe_velocity;
 	
 	move_and_slide();
 
