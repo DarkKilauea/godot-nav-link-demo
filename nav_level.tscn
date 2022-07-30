@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpgwmwic37x8y"]
+[gd_scene load_steps=8 format=3 uid="uid://bpgwmwic37x8y"]
 
 [ext_resource type="PackedScene" uid="uid://dtap8u31685r3" path="res://nav_test_level.glb" id="1_vb7b7"]
 [ext_resource type="PackedScene" uid="uid://c1owpxl700m7a" path="res://character.tscn" id="2_pyxl3"]
+[ext_resource type="PackedScene" uid="uid://vi7y113wn1oc" path="res://teleporter.tscn" id="3_5ldb4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j84sh"]
 
@@ -46,10 +47,24 @@ navmesh = SubResource("NavigationMesh_120t2")
 [node name="Character" parent="." instance=ExtResource("2_pyxl3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.7931, 0)
 top_level = true
+collision_layer = 2
 
-[node name="NavigationLink3D" type="NavigationLink3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.48026, 4.90088, 0.727812)
-start_location = Vector3(1.75, -0.3, 0)
-end_location = Vector3(1, -5, 0)
+[node name="JumpLink" type="NavigationLink3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 4.6, 1)
+bi_directional = false
+end_location = Vector3(0, -4.5, 0)
+
+[node name="Teleporter1" parent="." instance=ExtResource("3_5ldb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -0.2069, 0)
+destination = NodePath("../Teleporter2")
+
+[node name="Teleporter2" parent="." instance=ExtResource("3_5ldb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -0.2069, 11)
+destination = NodePath("../Teleporter1")
+
+[node name="TeleportLink" type="NavigationLink3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+end_location = Vector3(0, 0, 11)
+travel_cost = 0.1
 
 [editable path="NavRegion/nav_test_level"]

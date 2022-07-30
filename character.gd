@@ -6,6 +6,7 @@ extends CharacterBody3D
 @onready var path_vis: MeshInstance3D = $PathVisualization;
 
 
+var initial_transform: Transform3D;
 var nav_path_mesh := ImmediateMesh.new();
 var nav_safe_velocity := Vector3();
 
@@ -14,6 +15,9 @@ func _ready() -> void:
 	path_vis.mesh = nav_path_mesh;
 	path_vis.top_level = true;
 	path_vis.global_transform = Transform3D();
+	
+	initial_transform = self.global_transform;
+	nav_agent.set_target_location(initial_transform.origin);
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -25,6 +29,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		var target_location := NavigationServer3D.map_get_closest_point_to_segment(nav_map_rid, from, to);
 		nav_agent.set_target_location(target_location);
 		nav_safe_velocity = Vector3();
+	
+	if event.is_action("reset"):
+		nav_agent.set_target_location(initial_transform.origin);
+		self.global_transform = initial_transform;
 
 
 func _physics_process(delta: float) -> void:
