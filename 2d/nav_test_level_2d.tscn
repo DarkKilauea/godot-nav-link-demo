@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://ggcnbomyywbh"]
+
+[ext_resource type="PackedScene" uid="uid://c2s7a5xlw6c62" path="res://2d/character.tscn" id="1_ivxqp"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_yf3lh"]
+vertices = PackedVector2Array(997, 16, 1000, 231, 10, 226, 11, 14)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+outlines = [PackedVector2Array(11, 14, 10, 226, 1000, 231, 997, 16)]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_s743p"]
+vertices = PackedVector2Array(19, 398, 1001, 400, 1003, 579, 16, 581)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+outlines = [PackedVector2Array(19, 398, 1001, 400, 1003, 579, 16, 581)]
+
+[node name="NavTestLevel2D" type="Node2D"]
+
+[node name="Bridge" type="Polygon2D" parent="."]
+color = Color(0.709804, 1, 0.72549, 1)
+polygon = PackedVector2Array(489, 242, 598, 241, 600, 390, 489, 390)
+
+[node name="Top" type="Polygon2D" parent="."]
+color = Color(0.560784, 0.635294, 1, 1)
+polygon = PackedVector2Array(12, 11, 1004, 16, 1008, 239, 10, 245)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Top"]
+position = Vector2(9.49142, 11.4764)
+scale = Vector2(0.982801, 0.952772)
+navpoly = SubResource("NavigationPolygon_yf3lh")
+
+[node name="Bottom" type="Polygon2D" parent="."]
+color = Color(0.309804, 0.713726, 1, 1)
+polygon = PackedVector2Array(7, 388, 1013, 389, 1013, 586, 6, 589)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Bottom"]
+navpoly = SubResource("NavigationPolygon_s743p")
+
+[node name="Character" parent="." instance=ExtResource("1_ivxqp")]
+position = Vector2(448, 128)
