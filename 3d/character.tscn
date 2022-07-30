@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1owpxl700m7a"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://character.gd" id="1_2fh30"]
+[ext_resource type="Script" path="res://3d/character.gd" id="1_2fh30"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_byxc8"]
 

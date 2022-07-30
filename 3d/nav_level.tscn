@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpgwmwic37x8y"]
+[gd_scene load_steps=8 format=3 uid="uid://ddw7b7cvw2aic"]
 
-[ext_resource type="PackedScene" uid="uid://dtap8u31685r3" path="res://nav_test_level.glb" id="1_vb7b7"]
-[ext_resource type="PackedScene" uid="uid://c1owpxl700m7a" path="res://character.tscn" id="2_pyxl3"]
-[ext_resource type="PackedScene" uid="uid://vi7y113wn1oc" path="res://teleporter.tscn" id="3_5ldb4"]
+[ext_resource type="PackedScene" uid="uid://dtap8u31685r3" path="res://3d/nav_test_level.glb" id="1_vb7b7"]
+[ext_resource type="PackedScene" path="res://3d/character.tscn" id="2_pyxl3"]
+[ext_resource type="PackedScene" path="res://3d/teleporter.tscn" id="3_5ldb4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j84sh"]
 

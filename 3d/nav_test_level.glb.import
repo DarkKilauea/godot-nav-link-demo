@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dtap8u31685r3"
-path="res://.godot/imported/nav_test_level.glb-3d22b56dd7c7fb789ba1f5f3b607bfd5.scn"
+path="res://.godot/imported/nav_test_level.glb-e6649a0bf5c141c9193a60d42583f27a.scn"
 
 [deps]
 
-source_file="res://nav_test_level.glb"
-dest_files=["res://.godot/imported/nav_test_level.glb-3d22b56dd7c7fb789ba1f5f3b607bfd5.scn"]
+source_file="res://3d/nav_test_level.glb"
+dest_files=["res://.godot/imported/nav_test_level.glb-e6649a0bf5c141c9193a60d42583f27a.scn"]
 
 [params]
 

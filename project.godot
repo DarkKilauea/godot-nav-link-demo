@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="NavLink Demo"
-run/main_scene="res://nav_level.tscn"
+run/main_scene="res://3d/nav_level.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 config/icon="res://icon.png"
 
