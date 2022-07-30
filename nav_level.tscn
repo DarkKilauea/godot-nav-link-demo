@@ -51,7 +51,7 @@ collision_layer = 2
 
 [node name="JumpLink" type="NavigationLink3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 4.6, 1)
-bi_directional = false
+bidirectional = false
 end_location = Vector3(0, -4.5, 0)
 
 [node name="Teleporter1" parent="." instance=ExtResource("3_5ldb4")]
