@@ -22,7 +22,6 @@ gi_mode = 2
 mesh = SubResource("CapsuleMesh_i42x3")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-avoidance_enabled = true
 radius = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -34,4 +33,3 @@ top_level = true
 [connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_finished"]
 [connection signal="path_changed" from="NavigationAgent3D" to="." method="_on_path_changed"]
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_target_reached"]
-[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_velocity_computed"]

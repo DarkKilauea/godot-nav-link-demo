@@ -8,7 +8,6 @@ extends CharacterBody3D
 
 var initial_transform: Transform3D;
 var nav_path_mesh := ImmediateMesh.new();
-var nav_safe_velocity := Vector3();
 
 
 func _ready() -> void:
@@ -28,7 +27,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		var nav_map_rid := get_world_3d().navigation_map;
 		var target_location := NavigationServer3D.map_get_closest_point_to_segment(nav_map_rid, from, to);
 		nav_agent.set_target_location(target_location);
-		nav_safe_velocity = Vector3();
 	
 	if event.is_action("reset"):
 		nav_agent.set_target_location(initial_transform.origin);
@@ -53,8 +51,7 @@ func _physics_process(delta: float) -> void:
 		var direction := current_pos.direction_to(target);
 		var desired_velocity := direction * nav_agent.max_speed;
 		
-		nav_agent.set_velocity(desired_velocity);
-		velocity += nav_safe_velocity;
+		velocity += desired_velocity;
 	
 	move_and_slide();
 
@@ -85,6 +82,3 @@ func _on_target_reached() -> void:
 func _on_path_changed() -> void:
 	draw_path();
 
-
-func _on_velocity_computed(safe_velocity: Vector3) -> void:
-	nav_safe_velocity = safe_velocity;
