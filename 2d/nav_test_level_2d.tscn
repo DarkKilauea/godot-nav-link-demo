@@ -36,3 +36,8 @@ navpoly = SubResource("NavigationPolygon_s743p")
 
 [node name="Character" parent="." instance=ExtResource("1_ivxqp")]
 position = Vector2(448, 128)
+
+[node name="NavigationLink2D" type="NavigationLink2D" parent="."]
+position = Vector2(547, 324)
+start_location = Vector2(0, 89)
+end_location = Vector2(0, -104)

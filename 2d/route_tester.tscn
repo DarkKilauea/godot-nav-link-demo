@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://oldv624hglon"]
+
+[ext_resource type="Script" path="res://2d/route_tester.gd" id="1_vvh1v"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_qnijh"]
+vertices = PackedVector2Array(72, 72, 248, 72, 248, 328, 72, 504, 952, 504, 648, 328, 952, 72, 648, 72)
+polygons = [PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5), PackedInt32Array(6, 4, 5, 7)]
+outlines = [PackedVector2Array(72, 72, 72, 504, 952, 504, 952, 72, 648, 72, 648, 328, 248, 328, 248, 72)]
+
+[node name="RouteTester" type="Node2D"]
+script = ExtResource("1_vvh1v")
+
+[node name="Background" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(64, 64, 64, 512, 960, 512, 960, 64, 640, 64, 640, 320, 256, 320, 256, 64)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navpoly = SubResource("NavigationPolygon_qnijh")
+
+[node name="NavigationLink2D" type="NavigationLink2D" parent="."]
+start_location = Vector2(768, 192)
+end_location = Vector2(192, 192)
+
+[node name="Start" type="Polygon2D" parent="."]
+position = Vector2(158, 128)
+color = Color(0, 0.580392, 0.00784314, 1)
+polygon = PackedVector2Array(-15, -16, -15, 16, 17, 16, 17, -16)
+
+[node name="RouteVis" type="Line2D" parent="."]
+top_level = true
+width = 4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="OptimizePathButton" type="CheckButton" parent="VBoxContainer"]
+offset_right = 158.0
+offset_bottom = 31.0
+text = "Optimize Path"
+
+[node name="EnableLinkButton" type="CheckButton" parent="VBoxContainer"]
+offset_top = 35.0
+offset_right = 158.0
+offset_bottom = 66.0
+button_pressed = true
+text = "Link Enabled"
+
+[connection signal="pressed" from="VBoxContainer/EnableLinkButton" to="." method="_on_enable_link_button_pressed"]

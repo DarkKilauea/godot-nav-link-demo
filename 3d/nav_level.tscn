@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ddw7b7cvw2aic"]
 
-[ext_resource type="PackedScene" uid="uid://dtap8u31685r3" path="res://3d/nav_test_level.glb" id="1_vb7b7"]
+[ext_resource type="PackedScene" uid="uid://di2lkv2iu7h7q" path="res://3d/nav_test_level.glb" id="1_vb7b7"]
 [ext_resource type="PackedScene" uid="uid://vs0rbao4p3lb" path="res://3d/character.tscn" id="2_pyxl3"]
 [ext_resource type="PackedScene" path="res://3d/teleporter.tscn" id="3_5ldb4"]
 
@@ -52,7 +52,7 @@ collision_layer = 2
 [node name="JumpLink" type="NavigationLink3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 4.6, 1)
 bidirectional = false
-end_location = Vector3(0, -4.5, 0)
+end_location = Vector3(-3, -4.6, 0)
 
 [node name="Teleporter1" parent="." instance=ExtResource("3_5ldb4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -0.2069, 0)
