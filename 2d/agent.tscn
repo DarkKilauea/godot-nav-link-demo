@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://6xj2oivk7eur"]
+
+[ext_resource type="Script" path="res://2d/agent.gd" id="1_awxv6"]
+
+[node name="Agent" type="Node2D"]
+script = ExtResource("1_awxv6")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 8.0
+target_desired_distance = 8.0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, -4, -4, 0, 0, 4, 4, 0)
