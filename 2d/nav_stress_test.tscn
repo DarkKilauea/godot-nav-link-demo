@@ -43,4 +43,9 @@ position = Vector2(893, 481)
 process_callback = 0
 autostart = true
 
+[node name="AgentCountLabel" type="Label" parent="."]
+offset_right = 76.0
+offset_bottom = 26.0
+text = "0"
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

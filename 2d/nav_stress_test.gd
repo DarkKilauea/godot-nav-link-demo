@@ -7,6 +7,8 @@ const Agent: PackedScene = preload("res://2d/agent.tscn");
 @export var max_agents := 10_000;
 @export var agents_per_tick := 1;
 
+@onready var agent_count_label: Label = $AgentCountLabel;
+
 var current_agents := 0;
 
 
@@ -19,7 +21,7 @@ func _on_spawn_timer_timeout() -> void:
 	
 	for i in agents_per_tick:
 		if current_agents >= max_agents:
-			return;
+			break;
 		
 		var random_spawn_idx = randi_range(0, spawn_points.size() - 1);
 		
@@ -29,3 +31,5 @@ func _on_spawn_timer_timeout() -> void:
 		add_child(agent);
 		
 		current_agents += 1;
+	
+	agent_count_label.text = str(current_agents);
