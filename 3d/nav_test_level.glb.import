@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://di2lkv2iu7h7q"
+uid="uid://cxxb6stjsh721"
 path="res://.godot/imported/nav_test_level.glb-e6649a0bf5c141c9193a60d42583f27a.scn"
 
 [deps]
@@ -28,8 +28,8 @@ import_script/path=""
 _subresources={
 "materials": {
 "Material": {
-"use_external/enabled": false,
-"use_external/path": ""
+"use_external/enabled": true,
+"use_external/path": "res://3d/floor.material"
 }
 },
 "nodes": {

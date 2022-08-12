@@ -4,7 +4,7 @@
 
 [node name="Character" type="Polygon2D"]
 color = Color(0.905882, 0.447059, 1, 1)
-polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 script = ExtResource("1_jsfwm")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

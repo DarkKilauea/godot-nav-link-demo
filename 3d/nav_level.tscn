@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ddw7b7cvw2aic"]
 
-[ext_resource type="PackedScene" uid="uid://di2lkv2iu7h7q" path="res://3d/nav_test_level.glb" id="1_vb7b7"]
+[ext_resource type="PackedScene" uid="uid://cxxb6stjsh721" path="res://3d/nav_test_level.glb" id="1_vb7b7"]
 [ext_resource type="PackedScene" uid="uid://vs0rbao4p3lb" path="res://3d/character.tscn" id="2_pyxl3"]
 [ext_resource type="PackedScene" path="res://3d/teleporter.tscn" id="3_5ldb4"]
 
