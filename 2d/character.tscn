@@ -1,17 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2s7a5xlw6c62"]
+[gd_scene load_steps=3 format=3 uid="uid://c2s7a5xlw6c62"]
 
 [ext_resource type="Script" path="res://2d/character.gd" id="1_jsfwm"]
 
-[node name="Character" type="Polygon2D"]
-color = Color(0.905882, 0.447059, 1, 1)
-polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ci5u"]
+size = Vector2(16, 16)
+
+[node name="Character" type="CharacterBody2D"]
+collision_layer = 2
+motion_mode = 1
 script = ExtResource("1_jsfwm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4ci5u")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 8.0
 target_desired_distance = 8.0
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.905882, 0.447059, 1, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
 [node name="Line2D" type="Line2D" parent="."]
+top_level = true
 width = 2.0
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_finished"]

@@ -11,6 +11,7 @@ albedo_color = Color(0.356863, 0.741176, 0.988235, 1)
 material = SubResource("StandardMaterial3D_exct7")
 
 [node name="Character" type="CharacterBody3D"]
+collision_layer = 2
 floor_constant_speed = true
 script = ExtResource("1_2fh30")
 

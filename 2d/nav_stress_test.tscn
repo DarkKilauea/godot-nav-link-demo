@@ -1,43 +1,131 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpvys6jpa05c0"]
+[gd_scene load_steps=10 format=3 uid="uid://cpvys6jpa05c0"]
 
 [ext_resource type="Texture2D" uid="uid://y2qjkbbtkeku" path="res://addons/kenney_prototype_textures/dark/texture_08.png" id="1_5b834"]
 [ext_resource type="Script" path="res://2d/nav_stress_test.gd" id="1_n5txc"]
+[ext_resource type="PackedScene" uid="uid://ys3eyqjfmdum" path="res://2d/teleporter.tscn" id="4_tahg0"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_pdbyk"]
-vertices = PackedVector2Array(987, 555, 630, 550, 726, 303, 985.906, 412.215, 457, 34, 983, 33, 554, 170, 206, 172, 226, 88, 209, 385, 527, 385, 526, 560, 31, 559, 32, 80, 93, 30)
-polygons = [PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 3, 2, 6), PackedInt32Array(4, 6, 7, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(7, 9, 12, 13, 14), PackedInt32Array(14, 8, 7)]
-outlines = [PackedVector2Array(93, 30, 32, 80, 31, 559, 526, 560, 527, 385, 209, 385, 206, 172, 554, 170, 726, 303, 630, 550, 987, 555, 985.906, 412.215, 983, 33, 457, 34, 226, 88)]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_l8yid"]
+vertices = PackedVector2Array(240, -80, 240, 80, -240, 80, -240, -80)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+outlines = [PackedVector2Array(-240, -80, -240, 80, 240, 80, 240, -80)]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_y8bkw"]
+vertices = PackedVector2Array(240, -80, 240, 80, -240, 80, -240, -80)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+outlines = [PackedVector2Array(-240, -80, -240, 80, 240, 80, 240, -80)]
+
+[sub_resource type="Animation" id="Animation_sauoh"]
+resource_name = "Move"
+length = 12.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Platform1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 160), Vector2(704, 160), Vector2(320, 160)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Platform2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(704, 480), Vector2(320, 480), Vector2(704, 480)]
+}
+
+[sub_resource type="Animation" id="Animation_0uhfs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Platform1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 160)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Platform2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(704, 480)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_26eal"]
+_data = {
+"Move": SubResource("Animation_sauoh"),
+"RESET": SubResource("Animation_0uhfs")
+}
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_sc0ji"]
+vertices = PackedVector2Array(32, -48, 32, 112, -32, 112, -32, -48)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+outlines = [PackedVector2Array(-32, -48, -32, 112, 32, 112, 32, -48)]
 
 [node name="NavStressTest" type="Node2D"]
 script = ExtResource("1_n5txc")
-max_agents = 5000
-agents_per_tick = 100
+agents_per_tick = 10
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="Platform1" type="Polygon2D" parent="."]
 texture_repeat = 2
+position = Vector2(320, 160)
 texture = ExtResource("1_5b834")
 texture_scale = Vector2(16, 16)
-polygon = PackedVector2Array(90, 12, 17, 69, 21, 571, 193, 568, 539, 572, 539, 374, 221, 377, 217, 185, 551, 187, 710, 306, 607, 563, 1003, 568, 999, 18, 455, 19, 225, 73)
+polygon = PackedVector2Array(-256, -96, -256, 96, 256, 96, 256, -96)
+uv = PackedVector2Array(-256, -96, -256, 96, 256, 96, 256, -96)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navpoly = SubResource("NavigationPolygon_pdbyk")
+[node name="Spawner1" type="Marker2D" parent="Platform1" groups=["spawners"]]
+position = Vector2(0, -32)
 
-[node name="NavigationLink2D" type="NavigationLink2D" parent="."]
-start_location = Vector2(792, 138)
-end_location = Vector2(316, 477)
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Platform1" groups=["valid_regions"]]
+navpoly = SubResource("NavigationPolygon_l8yid")
 
-[node name="NavigationLink2D2" type="NavigationLink2D" parent="."]
-start_location = Vector2(284, 141)
-end_location = Vector2(285, 417)
+[node name="Teleporter" parent="Platform1" instance=ExtResource("4_tahg0")]
+position = Vector2(192, 32)
+destination = NodePath("../../Platform2/Teleporter2")
 
-[node name="Spawner1" type="Position2D" parent="." groups=["spawners"]]
-position = Vector2(110, 485)
+[node name="Platform2" type="Polygon2D" parent="."]
+texture_repeat = 2
+position = Vector2(704, 480)
+texture = ExtResource("1_5b834")
+texture_scale = Vector2(16, 16)
+polygon = PackedVector2Array(-256, -96, -256, 96, 256, 96, 256, -96)
+uv = PackedVector2Array(-256, -96, -256, 96, 256, 96, 256, -96)
 
-[node name="Spawner2" type="Position2D" parent="." groups=["spawners"]]
-position = Vector2(928, 78)
+[node name="Spawner2" type="Marker2D" parent="Platform2" groups=["spawners"]]
+position = Vector2(0, 32)
 
-[node name="Spawner3" type="Position2D" parent="." groups=["spawners"]]
-position = Vector2(893, 481)
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Platform2" groups=["valid_regions"]]
+navpoly = SubResource("NavigationPolygon_y8bkw")
+
+[node name="Teleporter2" parent="Platform2" instance=ExtResource("4_tahg0")]
+position = Vector2(-192, -32)
+destination = NodePath("../../Platform1/Teleporter")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Move"
+libraries = {
+"": SubResource("AnimationLibrary_26eal")
+}
 
 [node name="SpawnTimer" type="Timer" parent="."]
 process_callback = 0
@@ -47,5 +135,15 @@ autostart = true
 offset_right = 76.0
 offset_bottom = 26.0
 text = "0"
+
+[node name="NavigationLink2D" type="NavigationLink2D" parent="."]
+position = Vector2(512, 320)
+start_location = Vector2(0, -128)
+end_location = Vector2(0, 128)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(512, 288)
+navpoly = SubResource("NavigationPolygon_sc0ji")
+travel_cost = 2.0
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cxxb6stjsh721" path="res://3d/nav_test_level.glb" id="1_vb7b7"]
 [ext_resource type="PackedScene" uid="uid://vs0rbao4p3lb" path="res://3d/character.tscn" id="2_pyxl3"]
-[ext_resource type="PackedScene" path="res://3d/teleporter.tscn" id="3_5ldb4"]
+[ext_resource type="PackedScene" uid="uid://c64os0sdi6emf" path="res://3d/teleporter.tscn" id="3_5ldb4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j84sh"]
 
@@ -47,7 +47,6 @@ navmesh = SubResource("NavigationMesh_120t2")
 [node name="Character" parent="." instance=ExtResource("2_pyxl3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.7931, 0)
 top_level = true
-collision_layer = 2
 
 [node name="JumpLink" type="NavigationLink3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 4.6, 1)

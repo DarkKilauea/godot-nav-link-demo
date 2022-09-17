@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://c64os0sdi6emf"]
 
 [ext_resource type="Script" path="res://3d/teleporter.gd" id="1_big5q"]
 
@@ -11,7 +11,7 @@ bottom_radius = 2.0
 height = 0.1
 cap_bottom = false
 
-[node name="TeleporterPlatform" type="Area3D"]
+[node name="Teleporter" type="Area3D"]
 collision_mask = 2
 input_ray_pickable = false
 monitorable = false

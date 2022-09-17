@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 const WORLD_WIDTH := 1024.0;
 const WORLD_HEIGHT := 600.0;
@@ -20,8 +20,8 @@ func _physics_process(delta: float) -> void:
 		var current_pos := self.global_position;
 		
 		var direction := current_pos.direction_to(target);
-		var velocity := direction * nav_agent.max_speed * delta;
-		self.translate(velocity);
+		velocity = direction * nav_agent.max_speed;
+		move_and_slide();
 	else:
 		_move_to_random_location();
 
