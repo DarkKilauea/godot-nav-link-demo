@@ -82,3 +82,10 @@ func _on_target_reached() -> void:
 func _on_path_changed() -> void:
 	draw_path();
 
+
+func _on_link_reached(details: Dictionary) -> void:
+	print("Link reached: %s" % details);
+
+
+func _on_waypoint_reached(details: Dictionary) -> void:
+	print("Waypoint reached: %s" % details);
