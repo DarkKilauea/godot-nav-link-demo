@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://2d/route_tester.gd" id="1_vvh1v"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_qnijh"]
-vertices = PackedVector2Array(72, 72, 248, 72, 248, 328, 72, 504, 952, 504, 648, 328, 952, 72, 648, 72)
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_2pmtf"]
+vertices = PackedVector2Array(80, 80, 240, 80, 240, 336, 80, 496, 944, 496, 656, 336, 944, 80, 656, 80)
 polygons = [PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5), PackedInt32Array(6, 4, 5, 7)]
-outlines = [PackedVector2Array(72, 72, 72, 504, 952, 504, 952, 72, 648, 72, 648, 328, 248, 328, 248, 72)]
+outlines = [PackedVector2Array(80, 80, 80, 496, 944, 496, 944, 80, 656, 80, 656, 336, 240, 336, 240, 80)]
 
 [node name="RouteTester" type="Node2D"]
 script = ExtResource("1_vvh1v")
@@ -15,7 +15,7 @@ color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(64, 64, 64, 512, 960, 512, 960, 64, 640, 64, 640, 320, 256, 320, 256, 64)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navpoly = SubResource("NavigationPolygon_qnijh")
+navigation_polygon = SubResource("NavigationPolygon_2pmtf")
 
 [node name="NavigationLink2D" type="NavigationLink2D" parent="."]
 start_location = Vector2(768, 192)
@@ -35,14 +35,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="OptimizePathButton" type="CheckButton" parent="VBoxContainer"]
-offset_right = 158.0
-offset_bottom = 31.0
+layout_mode = 2
 text = "Optimize Path"
 
 [node name="EnableLinkButton" type="CheckButton" parent="VBoxContainer"]
-offset_top = 35.0
-offset_right = 158.0
-offset_bottom = 66.0
+layout_mode = 2
 button_pressed = true
 text = "Link Enabled"
 

@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 
 
 func draw_path() -> void:
-	var path := nav_agent.get_nav_path();
+	var path := nav_agent.get_current_navigation_path();
 	
 	if !nav_agent.is_navigation_finished() and !path.is_empty():
 		path_vis.points = path;

@@ -2,15 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://c2s7a5xlw6c62" path="res://2d/character.tscn" id="1_ivxqp"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_yf3lh"]
-vertices = PackedVector2Array(997, 16, 1000, 231, 10, 226, 11, 14)
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_usb7n"]
+vertices = PackedVector2Array(999.702, 13.1444, 999.702, 223.058, 14.7625, 231.455, 14.7625, 13.1444)
 polygons = [PackedInt32Array(0, 1, 2, 3)]
-outlines = [PackedVector2Array(11, 14, 10, 226, 1000, 231, 997, 16)]
+outlines = [PackedVector2Array(14.7625, 13.1444, 14.7625, 231.455, 999.702, 223.058, 999.702, 13.1444)]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_s743p"]
-vertices = PackedVector2Array(19, 398, 1001, 400, 1003, 579, 16, 581)
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_esaor"]
+vertices = PackedVector2Array(1000, 400, 1000, 576, 16, 576, 16, 400)
 polygons = [PackedInt32Array(0, 1, 2, 3)]
-outlines = [PackedVector2Array(19, 398, 1001, 400, 1003, 579, 16, 581)]
+outlines = [PackedVector2Array(16, 400, 16, 576, 1000, 576, 1000, 400)]
 
 [node name="NavTestLevel2D" type="Node2D"]
 
@@ -25,14 +25,14 @@ polygon = PackedVector2Array(12, 11, 1004, 16, 1008, 239, 10, 245)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Top"]
 position = Vector2(9.49142, 11.4764)
 scale = Vector2(0.982801, 0.952772)
-navpoly = SubResource("NavigationPolygon_yf3lh")
+navigation_polygon = SubResource("NavigationPolygon_usb7n")
 
 [node name="Bottom" type="Polygon2D" parent="."]
 color = Color(0.309804, 0.713726, 1, 1)
 polygon = PackedVector2Array(7, 388, 1013, 389, 1013, 586, 6, 589)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Bottom"]
-navpoly = SubResource("NavigationPolygon_s743p")
+navigation_polygon = SubResource("NavigationPolygon_esaor")
 
 [node name="Character" parent="." instance=ExtResource("1_ivxqp")]
 position = Vector2(448, 128)

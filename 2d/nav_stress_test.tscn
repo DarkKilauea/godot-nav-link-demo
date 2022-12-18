@@ -1,15 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://cpvys6jpa05c0"]
+[gd_scene load_steps=9 format=3 uid="uid://cpvys6jpa05c0"]
 
 [ext_resource type="Texture2D" uid="uid://y2qjkbbtkeku" path="res://addons/kenney_prototype_textures/dark/texture_08.png" id="1_5b834"]
 [ext_resource type="Script" path="res://2d/nav_stress_test.gd" id="1_n5txc"]
 [ext_resource type="PackedScene" uid="uid://ys3eyqjfmdum" path="res://2d/teleporter.tscn" id="4_tahg0"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_l8yid"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_5dfq8"]
 vertices = PackedVector2Array(240, -80, 240, 80, -240, 80, -240, -80)
 polygons = [PackedInt32Array(0, 1, 2, 3)]
 outlines = [PackedVector2Array(-240, -80, -240, 80, 240, 80, 240, -80)]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_y8bkw"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_aqn6f"]
 vertices = PackedVector2Array(240, -80, 240, 80, -240, 80, -240, -80)
 polygons = [PackedInt32Array(0, 1, 2, 3)]
 outlines = [PackedVector2Array(-240, -80, -240, 80, 240, 80, 240, -80)]
@@ -76,11 +76,6 @@ _data = {
 "RESET": SubResource("Animation_0uhfs")
 }
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_sc0ji"]
-vertices = PackedVector2Array(32, -48, 32, 112, -32, 112, -32, -48)
-polygons = [PackedInt32Array(0, 1, 2, 3)]
-outlines = [PackedVector2Array(-32, -48, -32, 112, 32, 112, 32, -48)]
-
 [node name="NavStressTest" type="Node2D"]
 script = ExtResource("1_n5txc")
 agents_per_tick = 10
@@ -97,7 +92,7 @@ uv = PackedVector2Array(-256, -96, -256, 96, 256, 96, 256, -96)
 position = Vector2(0, -32)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Platform1" groups=["valid_regions"]]
-navpoly = SubResource("NavigationPolygon_l8yid")
+navigation_polygon = SubResource("NavigationPolygon_5dfq8")
 
 [node name="Teleporter" parent="Platform1" instance=ExtResource("4_tahg0")]
 position = Vector2(192, 32)
@@ -115,7 +110,7 @@ uv = PackedVector2Array(-256, -96, -256, 96, 256, 96, 256, -96)
 position = Vector2(0, 32)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Platform2" groups=["valid_regions"]]
-navpoly = SubResource("NavigationPolygon_y8bkw")
+navigation_polygon = SubResource("NavigationPolygon_aqn6f")
 
 [node name="Teleporter2" parent="Platform2" instance=ExtResource("4_tahg0")]
 position = Vector2(-192, -32)
@@ -140,10 +135,5 @@ text = "0"
 position = Vector2(512, 320)
 start_location = Vector2(0, -128)
 end_location = Vector2(0, 128)
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-position = Vector2(512, 288)
-navpoly = SubResource("NavigationPolygon_sc0ji")
-travel_cost = 2.0
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
