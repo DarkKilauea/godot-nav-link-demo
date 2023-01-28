@@ -13,23 +13,23 @@ func _ready() -> void:
 	path_vis.global_transform = Transform2D();
 	
 	initial_transform = self.global_transform;
-	nav_agent.set_target_location(initial_transform.origin);
+	nav_agent.target_position = initial_transform.origin;
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var nav_map_rid := get_world_2d().navigation_map;
-		var target_location := NavigationServer2D.map_get_closest_point(nav_map_rid, event.position);
-		nav_agent.set_target_location(target_location);
+		var target_position := NavigationServer2D.map_get_closest_point(nav_map_rid, event.position);
+		nav_agent.target_position = target_position;
 	
 	if event.is_action("reset"):
-		nav_agent.set_target_location(initial_transform.origin);
+		nav_agent.target_position = initial_transform.origin;
 		self.global_transform = initial_transform;
 
 
 func _physics_process(delta: float) -> void:
 	if !nav_agent.is_navigation_finished():
-		var target := nav_agent.get_next_location();
+		var target := nav_agent.get_next_path_position();
 		var current_pos := self.global_position;
 		
 		var direction := current_pos.direction_to(target);

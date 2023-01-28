@@ -16,7 +16,7 @@ func _ready() -> void:
 	path_vis.global_transform = Transform3D();
 	
 	initial_transform = self.global_transform;
-	nav_agent.set_target_location(initial_transform.origin);
+	nav_agent.target_position = initial_transform.origin;
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -25,11 +25,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		var to := from + camera.project_ray_normal(event.position) * camera.far;
 		
 		var nav_map_rid := get_world_3d().navigation_map;
-		var target_location := NavigationServer3D.map_get_closest_point_to_segment(nav_map_rid, from, to);
-		nav_agent.set_target_location(target_location);
+		var target_position := NavigationServer3D.map_get_closest_point_to_segment(nav_map_rid, from, to);
+		nav_agent.target_position = target_position;
 	
 	if event.is_action("reset"):
-		nav_agent.set_target_location(initial_transform.origin);
+		nav_agent.target_position = initial_transform.origin;
 		self.global_transform = initial_transform;
 
 
@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Add movement along path
 	if !nav_agent.is_navigation_finished():
-		var target := nav_agent.get_next_location();
+		var target := nav_agent.get_next_path_position();
 		target.y = 0;
 		
 		var current_pos := get_global_transform().origin;

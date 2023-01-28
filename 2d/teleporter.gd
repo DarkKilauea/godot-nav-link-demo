@@ -1,7 +1,7 @@
 extends Area2D
 
 
-@export_node_path(Node2D) var destination: NodePath;
+@export_node_path("Node2D") var destination: NodePath;
 
 
 func _on_body_entered(body: Node2D) -> void:

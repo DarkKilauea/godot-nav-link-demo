@@ -20,8 +20,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	navigation_link.start_location = teleporter.global_position * navigation_link.transform;
-	navigation_link.end_location = teleporter_2.global_position * navigation_link.transform;
+	navigation_link.start_position = teleporter.global_position * navigation_link.transform;
+	navigation_link.end_position = teleporter_2.global_position * navigation_link.transform;
 
 
 func _on_spawn_timer_timeout() -> void:

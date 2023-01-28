@@ -15,9 +15,9 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var nav_map_rid := get_world_2d().navigation_map;
-		var start_location := NavigationServer2D.map_get_closest_point(nav_map_rid, start.global_position);
-		var target_location := NavigationServer2D.map_get_closest_point(nav_map_rid, event.position);
-		var path := NavigationServer2D.map_get_path(nav_map_rid, start_location, target_location, optimize_path_control.button_pressed);
+		var start_position := NavigationServer2D.map_get_closest_point(nav_map_rid, start.global_position);
+		var target_position := NavigationServer2D.map_get_closest_point(nav_map_rid, event.position);
+		var path := NavigationServer2D.map_get_path(nav_map_rid, start_position, target_position, optimize_path_control.button_pressed);
 		
 		route_vis.points = path;
 
