@@ -1,0 +1,110 @@
+[gd_scene load_steps=7 format=3 uid="uid://3t8nsg4q6wu4"]
+
+[ext_resource type="PackedScene" uid="uid://6xj2oivk7eur" path="res://2d/agent.tscn" id="1_qopgw"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_bpv0a"]
+vertices = PackedVector2Array(248, -88, 248, 88, -248, 88, -248, -88)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-248, -88, -248, 88, 248, 88, 248, -88)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_mwq7a"]
+vertices = PackedVector2Array(248, -88, 248, 88, -248, 88, -248, -88)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-248, -88, -248, 88, 248, 88, 248, -88)])
+
+[sub_resource type="Animation" id="Animation_ettax"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Platform1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(384, 192)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Platform2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(768, 448)]
+}
+
+[sub_resource type="Animation" id="Animation_lqkkd"]
+resource_name = "moving_platforms"
+length = 16.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Platform1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8, 16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(384, 192), Vector2(768, 192), Vector2(384, 192)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Platform2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 8, 16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(768, 448), Vector2(384, 448), Vector2(768, 448)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4kcal"]
+_data = {
+"RESET": SubResource("Animation_ettax"),
+"moving_platforms": SubResource("Animation_lqkkd")
+}
+
+[node name="TestLinkNav" type="Node2D"]
+
+[node name="Platform1" type="Polygon2D" parent="."]
+position = Vector2(384, 192)
+color = Color(0.466667, 0, 0.701961, 1)
+polygon = PackedVector2Array(-256, -96, 256, -96, 256, 96, -256, 96)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Platform1"]
+navigation_polygon = SubResource("NavigationPolygon_bpv0a")
+metadata/_edit_lock_ = true
+
+[node name="Platform2" type="Polygon2D" parent="."]
+position = Vector2(768, 448)
+color = Color(0, 0.568627, 0.215686, 1)
+polygon = PackedVector2Array(-256, -96, 256, -96, 256, 96, -256, 96)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Platform2"]
+navigation_polygon = SubResource("NavigationPolygon_mwq7a")
+metadata/_edit_lock_ = true
+
+[node name="NavigationLink2D" type="NavigationLink2D" parent="."]
+position = Vector2(576, 320)
+start_position = Vector2(0, -128)
+end_position = Vector2(0, 128)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "moving_platforms"
+playback_process_mode = 0
+libraries = {
+"": SubResource("AnimationLibrary_4kcal")
+}
+
+[node name="Agent" parent="." instance=ExtResource("1_qopgw")]
+position = Vector2(320, 192)
