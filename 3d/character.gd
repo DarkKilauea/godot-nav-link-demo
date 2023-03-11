@@ -3,7 +3,6 @@ extends CharacterBody3D
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D;
 @onready var camera: Camera3D = $Camera3D;
-@onready var path_vis: MeshInstance3D = $PathVisualization;
 
 
 var initial_transform: Transform3D;
@@ -11,10 +10,6 @@ var nav_path_mesh := ImmediateMesh.new();
 
 
 func _ready() -> void:
-	path_vis.mesh = nav_path_mesh;
-	path_vis.top_level = true;
-	path_vis.global_transform = Transform3D();
-	
 	initial_transform = self.global_transform;
 	nav_agent.target_position = initial_transform.origin;
 
@@ -51,36 +46,22 @@ func _physics_process(delta: float) -> void:
 		var direction := current_pos.direction_to(target);
 		var desired_velocity := direction * nav_agent.max_speed;
 		
+		nav_agent.set_velocity(desired_velocity);
 		velocity += desired_velocity;
 	
 	move_and_slide();
 
 
-func draw_path() -> void:
-	var path := nav_agent.get_current_navigation_path();
-	nav_path_mesh.clear_surfaces();
-	
-	if !nav_agent.is_navigation_finished() and !path.is_empty():
-		nav_path_mesh.surface_begin(Mesh.PRIMITIVE_LINE_STRIP);
-		
-		for point in path:
-			nav_path_mesh.surface_add_vertex(point);
-		
-		nav_path_mesh.surface_end();
-
-
 func _on_navigation_finished() -> void:
 	print("Nav Finished!");
-	draw_path();
 
 
 func _on_target_reached() -> void:
 	print("Target Reached!");
-	draw_path();
 
 
 func _on_path_changed() -> void:
-	draw_path();
+	pass;
 
 
 func _on_link_reached(details: Dictionary) -> void:
@@ -89,3 +70,7 @@ func _on_link_reached(details: Dictionary) -> void:
 
 func _on_waypoint_reached(details: Dictionary) -> void:
 	print("Waypoint reached: %s" % details);
+
+
+func _on_velocity_computed(safe_velocity: Vector3) -> void:
+	print("Safe Velocity: %s" % safe_velocity);

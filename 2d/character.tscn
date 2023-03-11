@@ -16,15 +16,14 @@ shape = SubResource("RectangleShape2D_4ci5u")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 8.0
 target_desired_distance = 8.0
+avoidance_enabled = true
+debug_enabled = true
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.905882, 0.447059, 1, 1)
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[node name="Line2D" type="Line2D" parent="."]
-top_level = true
-width = 2.0
-
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_finished"]
 [connection signal="path_changed" from="NavigationAgent2D" to="." method="_on_path_changed"]
 [connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_target_reached"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_velocity_computed"]

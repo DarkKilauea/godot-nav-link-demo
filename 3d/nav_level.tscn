@@ -45,7 +45,7 @@ navigation_mesh = SubResource("NavigationMesh_qv8hs")
 [node name="nav_test_level" parent="NavRegion" instance=ExtResource("1_vb7b7")]
 
 [node name="Character" parent="." instance=ExtResource("2_pyxl3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.7931, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.2069, 0)
 top_level = true
 
 [node name="JumpLink" type="NavigationLink3D" parent="."]

@@ -6,13 +6,13 @@
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5dfq8"]
 vertices = PackedVector2Array(240, -80, 240, 80, -240, 80, -240, -80)
-polygons = [PackedInt32Array(0, 1, 2, 3)]
-outlines = [PackedVector2Array(-240, -80, -240, 80, 240, 80, 240, -80)]
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-240, -80, -240, 80, 240, 80, 240, -80)])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_aqn6f"]
 vertices = PackedVector2Array(240, -80, 240, 80, -240, 80, -240, -80)
-polygons = [PackedInt32Array(0, 1, 2, 3)]
-outlines = [PackedVector2Array(-240, -80, -240, 80, 240, 80, 240, -80)]
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-240, -80, -240, 80, 240, 80, 240, -80)])
 
 [sub_resource type="Animation" id="Animation_sauoh"]
 resource_name = "Move"

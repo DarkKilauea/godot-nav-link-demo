@@ -4,13 +4,13 @@
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_usb7n"]
 vertices = PackedVector2Array(999.702, 13.1444, 999.702, 223.058, 14.7625, 231.455, 14.7625, 13.1444)
-polygons = [PackedInt32Array(0, 1, 2, 3)]
-outlines = [PackedVector2Array(14.7625, 13.1444, 14.7625, 231.455, 999.702, 223.058, 999.702, 13.1444)]
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(14.7625, 13.1444, 14.7625, 231.455, 999.702, 223.058, 999.702, 13.1444)])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_esaor"]
 vertices = PackedVector2Array(1000, 400, 1000, 576, 16, 576, 16, 400)
-polygons = [PackedInt32Array(0, 1, 2, 3)]
-outlines = [PackedVector2Array(16, 400, 16, 576, 1000, 576, 1000, 400)]
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(16, 400, 16, 576, 1000, 576, 1000, 400)])
 
 [node name="NavTestLevel2D" type="Node2D"]
 
@@ -39,5 +39,5 @@ position = Vector2(448, 128)
 
 [node name="NavigationLink2D" type="NavigationLink2D" parent="."]
 position = Vector2(547, 324)
-start_location = Vector2(0, 89)
-end_location = Vector2(0, -104)
+start_position = Vector2(0, 89)
+end_position = Vector2(0, -104)

@@ -2,16 +2,12 @@ extends CharacterBody2D
 
 
 @onready var nav_agent: NavigationAgent2D = $"NavigationAgent2D";
-@onready var path_vis: Line2D = $"Line2D";
 
 var initial_transform: Transform2D;
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	path_vis.top_level = true;
-	path_vis.global_transform = Transform2D();
-	
 	initial_transform = self.global_transform;
 	nav_agent.target_position = initial_transform.origin;
 
@@ -34,27 +30,22 @@ func _physics_process(delta: float) -> void:
 		
 		var direction := current_pos.direction_to(target);
 		velocity = direction * nav_agent.max_speed;
+		nav_agent.set_velocity(velocity);
+		
 		move_and_slide();
-
-
-func draw_path() -> void:
-	var path := nav_agent.get_current_navigation_path();
-	
-	if !nav_agent.is_navigation_finished() and !path.is_empty():
-		path_vis.points = path;
-	else:
-		path_vis.clear_points();
 
 
 func _on_navigation_finished() -> void:
 	print("Nav Finished!");
-	draw_path();
 
 
 func _on_target_reached() -> void:
 	print("Target Reached!");
-	draw_path();
 
 
 func _on_path_changed() -> void:
-	draw_path();
+	pass;
+
+
+func _on_velocity_computed(safe_velocity: Vector2) -> void:
+	print("Safe Velocity: %s" % safe_velocity);
