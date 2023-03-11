@@ -36,8 +36,6 @@ environment = SubResource("Environment_iqc0d")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 9.48589, 0)
 light_energy = 1.5
 shadow_enabled = true
-directional_shadow_mode = 0
-directional_shadow_max_distance = 128.0
 
 [node name="NavRegion" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_qv8hs")
