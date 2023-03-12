@@ -61,7 +61,8 @@ destination = NodePath("../Teleporter1")
 
 [node name="TeleportLink" type="NavigationLink3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
-end_position = Vector3(0, 0, 11)
+start_node_path = NodePath("../Teleporter1")
+end_node_path = NodePath("../Teleporter2")
 travel_cost = 0.1
 
 [editable path="NavRegion/nav_test_level"]

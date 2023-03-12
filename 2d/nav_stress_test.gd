@@ -8,7 +8,6 @@ const Agent: PackedScene = preload("res://2d/agent.tscn");
 @export var agents_per_tick := 1;
 
 @onready var agent_count_label: Label = $AgentCountLabel;
-@onready var navigation_link: NavigationLink2D = $NavigationLink2D
 @onready var teleporter: Area2D = $Platform1/Teleporter
 @onready var teleporter_2: Area2D = $Platform2/Teleporter2
 
@@ -17,11 +16,6 @@ var current_agents := 0;
 
 func _ready() -> void:
 	randomize();
-
-
-func _physics_process(delta: float) -> void:
-	navigation_link.start_position = teleporter.global_position * navigation_link.transform;
-	navigation_link.end_position = teleporter_2.global_position * navigation_link.transform;
 
 
 func _on_spawn_timer_timeout() -> void:

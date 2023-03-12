@@ -118,6 +118,7 @@ destination = NodePath("../../Platform1/Teleporter")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Move"
+playback_process_mode = 0
 libraries = {
 "": SubResource("AnimationLibrary_26eal")
 }
@@ -133,7 +134,7 @@ text = "0"
 
 [node name="NavigationLink2D" type="NavigationLink2D" parent="."]
 position = Vector2(512, 320)
-start_location = Vector2(0, -128)
-end_location = Vector2(0, 128)
+start_node_path = NodePath("../Platform1/Teleporter")
+end_node_path = NodePath("../Platform2/Teleporter2")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
